@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>امتحان - عداد الوقت</title>
+  <style>
+    body {
+      font-family: "Cairo", sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .progress-container {
+      width: 80%;
+      background-color: #ddd;
+      border-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 30px;
+      background-color: #4caf50;
+      text-align: center;
+      color: white;
+      line-height: 30px;
+      border-radius: 30px;
+      transition: width 1s linear;
+    }
+
+    #timer {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4caf50;
+      color: white;
+
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 15px;
+    }
+
+    fieldset:disabled {
+      opacity: 0.6;
+    }
+
+    .ended {
+      color: red;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>امتحان تجريبي</h2>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div id="timer">الوقت المتبقي: 10:00</div>
+
+  <form id="examForm">
+    <fieldset id="examFields">
+      <div class="question">
+        <label>1. ما هو عاصمة مصر؟</label><br>
+        <input type="radio" name="q1" value="القاهرة"> القاهرة<br>
+        <input type="radio" name="q1" value="الإسكندرية"> الإسكندرية<br>
+      </div>
+
+      <div class="question">
+        <label>2. ناتج 2 + 2 ؟</label><br>
+        <input type="radio" name="q2" value="3"> 3<br>
+        <input type="radio" name="q2" value="4"> 4<br>
+      </div>
+    </fieldset>
+  </form>
+
+  <button id="startBtn">ابدأ الامتحان</button>
+
+  <script>
+    const progressBar = document.getElementById("progressBar");
+    const timerDisplay = document.getElementById("timer");
+    const startBtn = document.getElementById("startBtn");
+    const examFields = document.getElementById("examFields");
+
+    let duration = 10 * 60; // 10 دقائق بالثواني
+    let remaining = duration;
+    let interval;
+
+    startBtn.addEventListener("click", () => {
+      startBtn.disabled = true;
+      examFields.disabled = false;
+      remaining = duration;
+
+      interval = setInterval(() => {
+        if (remaining <= 0) {
+          clearInterval(interval);
+          timerDisplay.innerHTML = '<span class="ended">انتهى الوقت ⏰</span>';
+          progressBar.style.width = "0%";
+          progressBar.style.backgroundColor = "red";
+          examFields.disabled = true; // منع الإجابة
+          startBtn.textContent = "تم غلق الامتحان";
+          startBtn.style.backgroundColor = "gray";
+        } else {
+          remaining--;
+          const percent = (remaining / duration) * 100;
+          progressBar.style.width = percent + "%";
+
+          const minutes = Math.floor(remaining / 60);
+          const seconds = remaining % 60;
+          timerDisplay.textContent = `الوقت المتبقي: ${minutes}:${seconds
+            .toString()
+            .padStart(2, "0")}`;
+        }
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>

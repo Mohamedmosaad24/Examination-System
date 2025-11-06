@@ -1,69 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Welcome</title>
-  <link rel="stylesheet" href="questions.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <link rel="stylesheet" href="questions.css" />
+  </head>
 
-<body class="question">
-  <div class="container">
-    
-    <div class="header"> 
-      <div class="div-progressgreen"></div>
-       <div class="div-progressgray"></div>
-      
-   
-         <h3 id="number-questions">Questions of 10</h3>
+  <body class="question">
+    <div class="container">
+      <div class="header">
+       <div class="div-progressgray">
+  <div class="div-progressorange" id="progressBar"></div>
+</div>
+
+        <h3 id="number-questions">Questions of 10</h3>
         <div class="timer" id="timer">Time Left: 10:00</div>
-    
-
-     </div>
-
-    <div>
-      <div class="sidebar-div">
-        <div class="sidebar-header">Questions List</div>
       </div>
 
-      <div class="question-div">
-        
-        <!-- مكان نص السؤال -->
-        <div class="question-text">Question text will be here</div>
-        
-        <!-- مكان الإجابات -->
-        <div class="answers-div">
-           <label class="answer-option">
-             <input type="radio" name="question1" value="A">
-             <span>Answer 1</span>
-           </label>
-
-          <label class="answer-option">
-            <input type="radio" name="question1" value="B">
-            <span>Answer 2</span>
-          </label>
-
-          <label class="answer-option">
-            <input type="radio" name="question1" value="C">
-            <span>Answer 3</span>
-          </label>
-
-          <label class="answer-option">
-            <input type="radio" name="question1" value="D">
-            <span>Answer 4</span>
-          </label>
+      <div>
+        <div class="sidebar-div">
+          <div class="sidebar-header">Questions List</div>
         </div>
 
-      </div>
+        <div class="question-div">
+          <div class="question-text">Question text will be here</div>
 
-      <div class="div-buttons">
-        <button id="btnPrev" onclick="previousQuestion()">Previous</button>
-        <button id="btnMark" onclick="markThisQuestion()">Mark Question</button>
-        <button id="btnNext" onclick="nextQuestion()">Next</button>
-        <button id="btnSubmit" onclick="submitQuiz()">Submit Exam</button>
+          <div class="answers-div">
+            <label class="answer-option">
+              <input type="radio" name="question1" value="A" />
+              <span>Answer 1</span>
+            </label>
+
+            <label class="answer-option">
+              <input type="radio" name="question1" value="B" />
+              <span>Answer 2</span>
+            </label>
+
+            <label class="answer-option">
+              <input type="radio" name="question1" value="C" />
+              <span>Answer 3</span>
+            </label>
+
+            <label class="answer-option">
+              <input type="radio" name="question1" value="D" />
+              <span>Answer 4</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="div-buttons">
+          <button id="btnPrev" onclick="previousQuestion()">Previous</button>
+          <button id="btnMark" onclick="markThisQuestion()">
+            Mark Question
+          </button>
+          <button id="btnNext" onclick="nextQuestion()">Next</button>
+          <button id="btnSubmit" onclick="submitQuiz()">Submit Exam</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="questions.js"></script>
-</body>
+    <script src="questions.js"></script>
+  </body>
 </html>

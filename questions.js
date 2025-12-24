@@ -177,7 +177,7 @@ function submitQuiz() {
       score++;
     }
   }
-  window.open('/resultPage.html')
+  window.location.replace('/resultPage.html');
   localStorage.setItem("score",score);
 }
 
